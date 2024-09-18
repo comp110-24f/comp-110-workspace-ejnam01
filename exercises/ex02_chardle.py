@@ -4,13 +4,13 @@ __author__ = "730654179"
 
 
 # Creating a function definition for input_word
-def input_word():
+def input_word() -> str:
     # Local variable is called word and asks for a five-character word
     word: str = input("Enter a 5-character word: ")
     # Using an if statement for when the length of the local variable is any number but 5
     # Printing an error statement and using exit() to stop the funtion execution
     if len(word) != 5:
-        print("Error: Word must contain 5 characters")
+        print("Error: Word must contain 5 characters.")
         exit()
     return word
 
@@ -29,7 +29,7 @@ def input_letter() -> str:
 # Creating a function definition for contains_char using the parameters of word and letter
 def contains_char(word: str, letter: str) -> None:
     print("Searching for " + letter + " in " + word)
-    # Local variable called x with an inital value of 0
+    # Local variable called index with an inital value of 0
     index: int = 0
     # Checking if the first character matches the letter
     if str(word)[0] == letter:
@@ -58,10 +58,13 @@ def contains_char(word: str, letter: str) -> None:
         index += 1
     # Using an if, elif, and else statement for how many instances the
     # Single character or letter is found in the word
+    # When no letter matches words
     if index == 0:
         print("No instances of " + letter + " found in " + word)
+    # When there is only one letter that matches the word
     elif index == 1:
-        print(str(index) + " instances of " + letter + " found in " + word)
+        print(str(index) + " instance of " + letter + " found in " + word)
+    # When there are 2 or more letters that match
     else:
         print(str(index) + " instances of " + letter + " found in " + word)
 
