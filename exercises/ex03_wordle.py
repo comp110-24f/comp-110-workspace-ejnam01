@@ -23,19 +23,16 @@ def contains_char(secret_word: str, char_guess: str) -> bool:
     """Checking if an index of a string parameter matches the second string parameter"""
     # Using an assert statement to test if char_guess is equal to 1
     assert len(char_guess) == 1
-    # Using a for statement to go through each character in secret_word
-    for char in secret_word:
-        if char == char_guess:
-            # Returning a True value if the char_guess is found in the secret_word
-            return True
-    # Returning false if not
-    return False
-
-
-# Creating emojis using string
-WHITE_BOX: str = "\U00002B1C"
-GREEN_BOX: str = "\U0001F7E9"
-YELLOW_BOX: str = "\U0001F7E8"
+    # Creating two local variables called idx with an initial value of 0 and in_the_word
+    idx: int = 0
+    in_the_word: bool = False
+    # While loop for when  idx is less than the length of the word and if the secret_word's character of the index matches the char_guess then the bool turns true
+    while idx < len(secret_word):
+        if secret_word[idx] == char_guess:
+            in_the_word = True
+        # If not, the index increases by one
+        idx += 1
+    return in_the_word
 
 
 # Function definition for emojified with two string parameters called guess and secret that returns a string value
@@ -43,32 +40,36 @@ def emojified(guess: str, secret: str) -> str:
     """Comparing two strings that have the same length"""
     # Using an assert statement to make sure that the length of the guess will equal the length of the secret
     assert len(guess) == len(secret)
-    # An empty string that will hold all of the feedback of emojis
-    emoji_result = ""
-
-    # Using another for statement to go through each element or character in the guess
-    for i in range(len(guess)):
-        # If, elif, and else statements
-        # If statement for when the first element of the guess and secret are the same
+    # Creating emojis using string
+    WHITE_BOX: str = "\U00002B1C"
+    GREEN_BOX: str = "\U0001F7E9"
+    YELLOW_BOX: str = "\U0001F7E8"
+    # Two local variables called i for the index and the result
+    i: int = 0
+    result: str = ""
+    # Using a while loop for when the local variable i is less than the length of the guess
+    while i < len(guess):
+        # if statement for when the two characters match both position and character
         if guess[i] == secret[i]:
-            # Adding a green box emoji when the character is in the right place and the right character
-            emoji_result += GREEN_BOX
-        # elif statement for when the character is correct but not the position
+            # Provide a green box emoji
+            result += GREEN_BOX
+        # elif for when a character exists within the secret but does not match the position
         elif contains_char(secret, guess[i]):
-            # Adding a yellow box emoji
-            emoji_result += YELLOW_BOX
-        # else statement for any result that does not match the two conditions above
+            # Provide a yellow box emoji
+            result += YELLOW_BOX
+        # else statement that is for any condition that does not match the above
         else:
             # Provide a white box emoji
-            emoji_result += WHITE_BOX
-    # Returning the emoji_result with emojis
-    return emoji_result
+            result += WHITE_BOX
+        # Increase the i by 1 to go through each character as long as the variable is less than the length of the guess
+        i += 1
+    return result
 
 
 # Function definition for main with one string parameter called secret that returns None
 def main(secret: str) -> None:
     """Point of entry of the program and main game loop."""
-    # Maximum number of turns allowed
+    # Setting the maximum number of turns allowed
     max_turns = 6
     # Starting with the first turn
     turn_number = 1
