@@ -3,8 +3,8 @@
 __author__ = "730654179"
 
 
-# Function definition for manual_append with two parameters
-# Parameter a being a list[int] and parameter i being an int that returns nothing
+# Function definition for manual_append with two parameters that returns nothing
+# Parameter a being a list[int] and parameter i being an int
 def manual_append(a: list[int], i: int) -> None:
     # Mutating the input by appending the i parameter
     a.append(i)
@@ -13,14 +13,14 @@ def manual_append(a: list[int], i: int) -> None:
 # Function definition for double with only one parameter called a that is a list[int]
 # Returns nothing as well
 def double(a: list[int]) -> None:
-    # Creating a local variable called b with an initial value of 0
-    b: int = 0
+    # Creating a local variable called idx with an initial value of 0
+    idx: int = 0
     # Using a while loop for when the local variable is less than the length of the list
-    while b < len(a):
+    while idx < len(a):
         # Creating an index which doubles the current element in the list
-        a[b] *= 2
-        # Increasing the value of b by one to go through each element in the list
-        b += 1
+        a[idx] *= 2
+        # Increasing the value of idx by one to go through each element in the list
+        idx += 1
 
 
 # Global variable called list_1 with a value of [1,2,3] and is a list[int]

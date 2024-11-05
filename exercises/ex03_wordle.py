@@ -69,37 +69,25 @@ def emojified(guess: str, secret: str) -> str:
 # Function definition for main with one string parameter called secret that returns None
 def main(secret: str) -> None:
     """Point of entry of the program and main game loop."""
-    # Setting the maximum number of turns allowed
-    max_turns = 6
-    # Starting with the first turn
-    turn_number = 1
-    # To know when the player has won
-    has_won = False
-    # Using a while loop for when the number of turns they have had is less than or equal to the max number of turns (6) and the player has not won
-    while turn_number <= max_turns and not has_won:
+    # Starting with the first turn and creating a local variable called turn with an initial value of 1
+    turn = 1
+    # Using a while loop for when the number of turns they have had is less than or equal to the max number of turns (6)
+    while turn <= 6:
         # Printing the turn number with an f-string
-        print(f"=== Turn {turn_number}/{max_turns} ===")
+        print(f"=== Turn {turn}/6 ===")
         # Making sure that the length of the secret matches the input of the guess
         guess = input_guess(len(secret))
-        # Gaining emojis as the result
-        result = emojified(guess, secret)
-        # Printing the result
-        print(result)
-
+        # Printing the results
+        print(emojified(guess, secret))
         # Using an if else statement for when the guess matches the secret
         if guess == secret:
             # In the case that they are equal, a winning f-string statement is printed
-            print(f"You won in {turn_number}/{max_turns} turns!")
-            # Shows that they won
-            has_won = True
-        # else statement for anything else that occurs other than the condition above
-        else:
-            # Increasing the turn_number by 1 when they haven't matched the two
-            turn_number += 1
-    # If statement for when the player has not won after the 6 maximum turns
-    if not has_won:
-        # Printing out an f-string statement to try again tomorrow
-        print(f"X/{max_turns} - Sorry, try again tomorrow!")
+            print(f"You won in {turn}/6 turns!")
+            return
+        # Increasing the turn variable by one until it reaches the max number of turns
+        turn += 1
+    # Printing out a statement to try again tomorrow once the while loop turns false
+    print("X/6 - Sorry, try again tomorrow!")
 
 
 # Allows the code to run as a module
